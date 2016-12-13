@@ -9,14 +9,35 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.sengkham.ltc_app.SignUpActivity"
-    android:background="@drawable/bg3">
+    android:background="@drawable/bg25">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView"
+        android:textAlignment="center"
+        android:text="@string/signUp"
+        android:textSize="23sp"
+        android:layout_centerHorizontal="true"
+        android:textStyle="normal|bold"
+        tools:textColor="@android:color/black"
+        android:textColor="@android:color/black" />
+
+    <Button
+        android:text="@string/signUp"
+        android:layout_width="match_parent"
+        android:onClick="clicksignUpsign"
+        android:layout_height="wrap_content"
+        android:id="@+id/button3"
+        android:layout_alignParentBottom="true" />
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/textView"
-        android:layout_above="@+id/button3">
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
 
         <LinearLayout
             android:orientation="horizontal"
@@ -30,7 +51,8 @@
                 android:id="@+id/textView2"
                 android:layout_weight="1"
                 android:textSize="23sp"
-                tools:textColor="@android:color/white" />
+                tools:textColor="@android:color/black"
+                android:textColor="@android:color/black" />
 
             <EditText
                 android:layout_width="0dp"
@@ -39,7 +61,8 @@
                 android:ems="10"
                 android:id="@+id/editText"
                 android:layout_weight="2"
-                tools:textColor="@android:color/white" />
+                tools:textColor="@android:color/black"
+                android:textColor="@android:color/black" />
         </LinearLayout>
 
         <LinearLayout
@@ -54,7 +77,8 @@
                 android:id="@+id/textView3"
                 android:layout_weight="1"
                 android:textSize="23sp"
-                tools:textColor="@android:color/white" />
+                tools:textColor="@android:color/black"
+                android:textColor="@android:color/black" />
 
             <EditText
                 android:layout_width="0dp"
@@ -63,7 +87,8 @@
                 android:ems="10"
                 android:id="@+id/editText2"
                 android:layout_weight="2"
-                tools:textColor="@android:color/white" />
+                tools:textColor="@android:color/black"
+                android:textColor="@android:color/black" />
         </LinearLayout>
 
         <LinearLayout
@@ -78,7 +103,8 @@
                 android:id="@+id/textView4"
                 android:layout_weight="1"
                 android:textSize="23sp"
-                tools:textColor="@android:color/white" />
+                tools:textColor="@android:color/black"
+                android:textColor="@android:color/black" />
 
             <EditText
                 android:layout_width="0dp"
@@ -87,27 +113,10 @@
                 android:ems="10"
                 android:id="@+id/editText3"
                 android:layout_weight="2"
-                tools:textColor="@android:color/white" />
+                tools:textColor="@android:color/black"
+                android:textColor="@android:color/black" />
         </LinearLayout>
 
 
     </LinearLayout>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView"
-        android:textAlignment="center"
-        android:text="@string/signUp"
-        android:textSize="23sp"
-        android:layout_centerHorizontal="true"
-        android:textStyle="normal|bold"
-        tools:textColor="@android:color/white" />
-
-    <Button
-        android:text="@string/signUp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/button3"
-        android:layout_alignParentBottom="true" />
 </RelativeLayout>
