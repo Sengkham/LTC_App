@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">LTC_App</string>
+    <string name="signUp">Sign Up</string>
 </resources>
