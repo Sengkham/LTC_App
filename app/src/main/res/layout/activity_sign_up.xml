@@ -9,7 +9,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.sengkham.ltc_app.SignUpActivity"
-    android:background="@drawable/bg25">
+    android:background="@drawable/wall8">
 
     <TextView
         android:layout_width="wrap_content"
@@ -20,8 +20,8 @@
         android:textSize="23sp"
         android:layout_centerHorizontal="true"
         android:textStyle="normal|bold"
-        tools:textColor="@android:color/black"
-        android:textColor="@android:color/black" />
+        tools:textColor="@android:color/background_light"
+        android:textColor="@android:color/background_light" />
 
     <Button
         android:text="@string/signUp"
@@ -53,8 +53,8 @@
                 android:id="@+id/textView2"
                 android:layout_weight="1"
                 android:textSize="18sp"
-                tools:textColor="@android:color/black"
-                android:textColor="@android:color/black" />
+                tools:textColor="@android:color/background_light"
+                android:textColor="@android:color/background_light" />
 
             <EditText
                 android:layout_width="0dp"
@@ -64,7 +64,7 @@
                 android:id="@+id/editText"
                 android:layout_weight="2"
                 tools:textColor="@android:color/black"
-                android:textColor="@android:color/black" />
+                android:textColor="@android:color/background_light" />
         </LinearLayout>
 
         <LinearLayout
@@ -79,8 +79,8 @@
                 android:id="@+id/textView3"
                 android:layout_weight="1"
                 android:textSize="18sp"
-                tools:textColor="@android:color/black"
-                android:textColor="@android:color/black" />
+                tools:textColor="@android:color/background_light"
+                android:textColor="@android:color/background_light" />
 
             <EditText
                 android:layout_width="0dp"
@@ -90,7 +90,7 @@
                 android:id="@+id/editText2"
                 android:layout_weight="2"
                 tools:textColor="@android:color/black"
-                android:textColor="@android:color/black" />
+                android:textColor="@android:color/background_light" />
         </LinearLayout>
 
         <LinearLayout
@@ -105,8 +105,8 @@
                 android:id="@+id/textView4"
                 android:layout_weight="1"
                 android:textSize="18sp"
-                tools:textColor="@android:color/black"
-                android:textColor="@android:color/black" />
+                tools:textColor="@android:color/background_light"
+                android:textColor="@android:color/background_light" />
 
             <EditText
                 android:layout_width="0dp"
@@ -114,7 +114,8 @@
                 android:inputType="textPassword"
                 android:ems="10"
                 android:id="@+id/editText3"
-                android:layout_weight="2" />
+                android:layout_weight="2"
+                android:textColor="@android:color/background_light" />
 
         </LinearLayout>
 
