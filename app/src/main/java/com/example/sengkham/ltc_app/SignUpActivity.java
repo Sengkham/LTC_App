@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class SignUpActivity extends AppCompatActivity {
 
@@ -41,6 +42,42 @@ public class SignUpActivity extends AppCompatActivity {
         if (nameString.equals("") || userString.equals("") || passwordString.equals("")) {
 
             Log.d("13decV1","have Space");
+            MyAlert myAlert = new MyAlert(SignUpActivity.this,"Have Space","Please Fill All Blank",R.drawable.doremon48);
+            myAlert.myDiglog();
+        }
+        else{
+
+            try {
+
+                UpdateUser updateUser = new UpdateUser(SignUpActivity.this,nameString,userString,passwordString);
+                updateUser.execute();
+
+                String s = updateUser.get();
+                 Log.d("14decV1","Result ==> " + s);
+                /*
+                if(s.equals("True")){
+                    MyAlert myAlert = new MyAlert(SignUpActivity.this,"Info","Saved Successfully",R.drawable.bird48);
+                    myAlert.myDiglog();
+                }
+                else
+                {
+                    MyAlert myAlert = new MyAlert(SignUpActivity.this,"Info","can not Save !!!",R.drawable.bird48);
+                    myAlert.myDiglog();
+                }
+                */
+                if(Boolean.parseBoolean(s)){
+
+                    finish();
+                }
+                else{
+                    Toast.makeText(SignUpActivity.this,"Cannot Update User",Toast.LENGTH_SHORT).show();
+                }
+
+
+            } catch (Exception e) {
+
+                Log.d("14decV1","e sigUp==> " + e.toString());
+            }
         }
 
 
