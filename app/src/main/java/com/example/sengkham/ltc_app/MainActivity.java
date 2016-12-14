@@ -1,16 +1,23 @@
 package com.example.sengkham.ltc_app;
 
 import android.content.Intent;
+import android.icu.text.LocaleDisplayNames;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity {
 
     private EditText userEditText, passwordEditText;
-    private  String userString,passwordString;
+    private String userString, passwordString, nameString;
+    private String[] loginStrings;
+    private boolean aBoolean = true;
 
 
     @Override
@@ -25,20 +32,58 @@ public class MainActivity extends AppCompatActivity {
 
     } // Main Method
 
-    public  void clickSignIn(View view) {
-                userString = userEditText.getText().toString().trim();
-                passwordString = passwordEditText.getText().toString().trim();
+    public void clickSignIn(View view) {
+        userString = userEditText.getText().toString().trim();
+        passwordString = passwordEditText.getText().toString().trim();
 
         if (userString.equals("") || passwordString.equals("")) {
-            Log.d("14decV1","have Space");
-            MyAlert myAlert = new MyAlert(MainActivity.this,getResources().getString(R.string.title_have_space),getResources().getString(R.string.message_have_space),R.drawable.doremon48);
+
+            MyAlert myAlert = new MyAlert(MainActivity.this, getResources().getString(R.string.title_have_space), getResources().getString(R.string.message_have_space), R.drawable.doremon48);
             myAlert.myDiglog();
 
         } else {
 
+            try {
+
+                SynUser synUser = new SynUser(MainActivity.this);
+                synUser.execute();
+                String s = synUser.get();
+                Log.d("14decV1", "JSON ==> " + s);
+
+                JSONArray jsonArray = new JSONArray(s);
+                loginStrings = new String[4];
+                for (int i = 0; i < jsonArray.length(); i += 1) {
+                    JSONObject jsonObject = jsonArray.getJSONObject(i);
+                    if (userString.equals(jsonObject.getString("user"))) {
+                        loginStrings[0] = jsonObject.getString("id");
+                        loginStrings[1] = jsonObject.getString("name");
+                        loginStrings[2] = jsonObject.getString("user");
+                        loginStrings[3] = jsonObject.getString("password");
+                        aBoolean = false;
+                    }
+                } // for
+
+                if(aBoolean){
+                    MyAlert myAlert = new MyAlert(MainActivity.this,getResources().getString(R.string.title_user_false),getResources().getString(R.string.message_user_false),R.drawable.rat48);
+                    myAlert.myDiglog();
+                }
+                else if(passwordString.equals(loginStrings[3])){
+                    // Password True
+                    Toast.makeText(MainActivity.this,"Welcom " + loginStrings[1],Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    // // Password False
+                    MyAlert myAlert = new MyAlert(MainActivity.this,getResources().getString(R.string.title_pass_false),getResources().getString(R.string.message_pass_false),R.drawable.kon48);
+                    myAlert.myDiglog();
+                }
+
+
+            } catch (Exception e) {
+
+                Log.d("14decV1", "e Main ==> " + e.toString());
+            }
 
         }
-
 
 
     }
@@ -46,14 +91,6 @@ public class MainActivity extends AppCompatActivity {
     public void clickSignUpMain(View view) {
         startActivity(new Intent(MainActivity.this, SignUpActivity.class));
     }
-
-
-
-
-
-
-
-
 
 
 } // Main class

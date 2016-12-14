@@ -10,7 +10,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.sengkham.ltc_app.MainActivity"
-    android:background="@drawable/wall8">
+    android:background="@drawable/bg23">
 
     <LinearLayout
         android:orientation="vertical"
@@ -22,7 +22,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:srcCompat="@drawable/logo_ltc"
-            android:id="@+id/imageView" />
+            android:id="@+id/imageView"
+            android:background="#82ffffff" />
 
         <EditText
             android:layout_width="match_parent"
