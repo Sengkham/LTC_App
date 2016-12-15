@@ -6,6 +6,10 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -19,7 +23,13 @@ public class ServiceActivity extends FragmentActivity implements OnMapReadyCallb
     private GoogleMap mMap;
     private LocationManager locationManager;
     private Criteria criteria;
-    private double latADouble, lngADouble;
+    private double latADouble, lngADouble, updateLatADouble,updateLngADouble;
+    private  String[] loginStrings;
+    private TextView textView;
+    private EditText editText;
+    private ImageView imageView,takePhotImageView;
+    String nameString;
+
 
 
 
@@ -27,13 +37,22 @@ public class ServiceActivity extends FragmentActivity implements OnMapReadyCallb
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.my_layout);
-
+        textView = (TextView) findViewById(R.id.textView5);
+      //   = (EditText) findViewById(R.id.editText5);
          // Setup
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
         criteria = new Criteria();
         criteria.setAccuracy(Criteria.ACCURACY_FINE);
         criteria.setAltitudeRequired(false);
         criteria.setBearingRequired(false);
+        loginStrings = getIntent().getStringArrayExtra("Login");
+
+
+        textView.setText(loginStrings[1]);
+        editText = (EditText) findViewById(R.id.editText5);
+        imageView = (ImageView) findViewById(R.id.imageView2);
+        takePhotImageView = (ImageView) findViewById(R.id.imageView4);
+
 
 
 
@@ -42,6 +61,24 @@ public class ServiceActivity extends FragmentActivity implements OnMapReadyCallb
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
     } // Main Method
+
+    public void clickSave(View view) {
+
+        nameString = editText.getText().toString();
+        //nameString = editText.getText().toString().trim();
+
+        //Check Space
+        if (nameString.equals("")) {
+            //Have Space
+            MyAlert myAlert = new MyAlert(ServiceActivity.this,
+                    getResources().getString(R.string.title_have_space),
+                    getResources().getString(R.string.message_have_space),
+                    R.drawable.doremon48);
+            myAlert.myDiglog();
+        }
+
+
+    }
 
     @Override
     protected void onResume() {
@@ -124,6 +161,13 @@ public class ServiceActivity extends FragmentActivity implements OnMapReadyCallb
         // Add a marker in Sydney and move the camera
 
         myAddMaker(latADouble,lngADouble);
+        mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
+            @Override
+            public void onMapClick(LatLng latLng) {
+                mMap.clear();
+                myAddMaker(latLng.latitude, latLng.longitude);
+            }
+        });
 
     } // on Map
 
