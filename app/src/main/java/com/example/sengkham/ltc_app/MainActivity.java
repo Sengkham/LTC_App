@@ -1,7 +1,6 @@
 package com.example.sengkham.ltc_app;
 
 import android.content.Intent;
-import android.icu.text.LocaleDisplayNames;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -69,7 +68,12 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else if(passwordString.equals(loginStrings[3])){
                     // Password True
-                    Toast.makeText(MainActivity.this,"Welcom " + loginStrings[1],Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this,"Welcome " + loginStrings[1],Toast.LENGTH_SHORT).show();
+
+                    Intent intent = new Intent(MainActivity.this,ServiceActivity.class);
+                    intent.putExtra("Login",loginStrings);
+                    startActivity(intent);
+                    finish();
                 }
                 else{
                     // // Password False
