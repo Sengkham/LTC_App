@@ -6,7 +6,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 /**
  * Created by Sengkham on 16/12/2016.
@@ -51,6 +54,15 @@ public class MyAdapter extends BaseAdapter {
         TextView nameTextView = (TextView) view1.findViewById(R.id.textView9);
         TextView latTextView = (TextView) view1.findViewById(R.id.textView8);
         TextView lngTextView = (TextView) view1.findViewById(R.id.textView7);
-        return null;
+        ImageView iconImageView = (ImageView) view1.findViewById(R.id.imageView3);
+
+        nameTextView.setText(nameStrings[i]);
+        latTextView.setText("Lat = " + String.format("%.3f",Double.parseDouble(latStrings[i])));
+        lngTextView.setText("Lng = " + String.format("%.3f",Double.parseDouble(lngStrings[i])));
+
+        Picasso.with(context).load(iconStrings[i]).into(iconImageView);
+
+
+        return view1;
     }
 }
