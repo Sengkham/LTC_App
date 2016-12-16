@@ -62,6 +62,7 @@ public class ServiceActivity extends FragmentActivity implements OnMapReadyCallb
         mapFragment.getMapAsync(this);
     } // Main Method
 
+
     public void clickSave(View view) {
 
         nameString = editText.getText().toString();
