@@ -64,11 +64,11 @@ public class MainActivity extends AppCompatActivity {
                 loginStrings = new String[4];
                 for (int i = 0; i < jsonArray.length(); i += 1) {
                     JSONObject jsonObject = jsonArray.getJSONObject(i);
-                    if (userString.equals(jsonObject.getString("user"))) {
+                    if (userString.equals(jsonObject.getString("User"))) {
                         loginStrings[0] = jsonObject.getString("id");
-                        loginStrings[1] = jsonObject.getString("name");
-                        loginStrings[2] = jsonObject.getString("user");
-                        loginStrings[3] = jsonObject.getString("password");
+                        loginStrings[1] = jsonObject.getString("Name");
+                        loginStrings[2] = jsonObject.getString("User");
+                        loginStrings[3] = jsonObject.getString("Password");
                         aBoolean = false;
                     }
                 } // for

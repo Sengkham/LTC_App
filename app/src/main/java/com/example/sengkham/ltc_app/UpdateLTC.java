@@ -5,43 +5,40 @@ import android.os.AsyncTask;
 import android.util.Log;
 
 import com.squareup.okhttp.FormEncodingBuilder;
-import com.squareup.okhttp.MediaType;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.RequestBody;
 import com.squareup.okhttp.Response;
 
-import java.io.IOException;
-
-import okio.BufferedSink;
-
 /**
- * Created by Sengkham on 14/12/2016.
+ * Created by Sengkham on 16/12/2016.
  */
 
-public class UpdateUser extends AsyncTask<Void,Void,String>{
-    private static final String urlPHP = "http://lao-hosting.com/ltc/add_user_master.php";
-    private Context context;
-    private String nameString,userString,passwordString;
+public class UpdateLTC extends AsyncTask<Void,Void,String> {
 
-    public UpdateUser(Context context, String nameString, String userString, String passwordString) {
+    private Context context;
+    private  static  final String urlPHP = "http://lao-hosting.com/ltc/add_ltc.php";
+    private String nameLoginString, imageString,latString,lngString;
+
+    public UpdateLTC(Context context, String nameLoginString, String imageString, String latString, String lngString) {
         this.context = context;
-        this.nameString = nameString;
-        this.userString = userString;
-        this.passwordString = passwordString;
+        this.nameLoginString = nameLoginString;
+        this.imageString = imageString;
+        this.latString = latString;
+        this.lngString = lngString;
     }
 
     @Override
-    protected String doInBackground(Void... params) {
-
+    protected String doInBackground(Void... voids) {
         try {
 
             OkHttpClient okHttpClient = new OkHttpClient();
             RequestBody requestBody = new FormEncodingBuilder()
                     .add("isAdd","true")
-                    .add("Name",nameString)
-                    .add("User",userString)
-                    .add("Password",passwordString)
+                    .add("NameLogin",nameLoginString)
+                    .add("Image",imageString)
+                    .add("Lat",latString)
+                    .add("Lng",lngString)
                     .build();
             Request.Builder builder = new Request.Builder();
             Request request = builder.url(urlPHP).post(requestBody).build();
@@ -50,11 +47,8 @@ public class UpdateUser extends AsyncTask<Void,Void,String>{
 
         }catch(Exception e){
 
-            Log.d("14devV1", "e doin ==> " + e.toString());
+            Log.d("16devV4", "e doin ==> " + e.toString());
             return null;
         }
-
-
-
     }
-} // Main Class
+}

@@ -8,4 +8,6 @@
     <string name="title_pass_false">Password</string>
     <string name="message_pass_false">Please Try Again Password False</string>
     <string name="title_activity_service">Map</string>
+    <string name="title_noImage">Image</string>
+    <string name="message_noImage">Please Choose Image</string>
 </resources>
